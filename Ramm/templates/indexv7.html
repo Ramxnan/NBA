@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Amrita Course Accreditation System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #003366;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Amrita</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Colleges</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Amrita Course Accreditation System</h1>
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <form name="courseForm" method="POST">
+
+                    <!-- Use Bootstrap's form-group class for each input field to add spacing -->
+                    <div class="form-group">
+                        <label for="batch">Batch</label>
+                        <input type="number" id="batch" name="batch" placeholder="Batch" required class="form-control">
+                    </div>
+
+                    <!-- Repeat similar structure for other fields -->
+                    <div class="form-group">
+                        <label for="section">Section</label>
+                        <select name="section" class="form-control" required>
+                            <option value="">Select the section</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Continue with the rest of your form fields using the same structure -->
+                    <div class="form-group">
+                        <label for="subjectCode">Subject Code</label>
+                        <input type="text" name="subjectCode" placeholder="Subject Code" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="subjectName">Subject Name</label>
+                        <input type="text" name="subjectName" placeholder="Subject Name" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="numberOfStudents">Number of Students</label>
+                        <input type="number" name="numberOfStudents" placeholder="Number of Students" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="numberOfCOs">Number of CO's</label>
+                        <input type="number" name="numberOfCOs" placeholder="Number of CO's" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="internal">Internal</label>
+                        <input type="number" name="internal" placeholder="Internal" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="external">External</label>
+                        <input type="number" name="external" placeholder="External" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="direct">Direct</label>
+                        <input type="number" name="direct" placeholder="Direct" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="indirect">Indirect</label>
+                        <input type="number" name="indirect" placeholder="Indirect" required class="form-control">
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label for="numberOfComponents">Number of Components</label>
+                        <input type="number" id="numberOfComponents" name="numberOfComponents" placeholder="Number of Components" required class="form-control">
+                    </div>
+
+                    <div class="component-container mt-3" id="componentContainer"></div>
+
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+            </div>
+    </div>
+    
+    <script>
+        $(document).ready(function(){
+            $("#numberOfComponents").change(function(){
+                var numComponents = $(this).val();
+                $("#componentContainer").empty().show();
+                var table = $('<table></table>').addClass('table');
+                var thead = $('<thead></thead>').append('<tr><th>Component Name</th><th>Component Value</th></tr>');
+                table.append(thead);
+                for(var i=0; i<numComponents; i++){
+                    var row = $('<tr></tr>');
+                    row.append('<td><input type="text" name="componentName'+(i+1)+'" placeholder="Component Name '+(i+1)+'" required class="form-control"></td>');
+                    row.append('<td><input type="text" name="componentValue'+(i+1)+'" placeholder="Component Value '+(i+1)+'" required class="form-control"></td>');
+                    row.append('<td><input type="text" name="componentValue'+(i+1)+'" placeholder="Component Value '+(i+1)+'" required class="form-control"></td>');
+                    table.append(row);
+                }
+                $("#componentContainer").append(table);
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+

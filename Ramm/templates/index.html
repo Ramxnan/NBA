@@ -1,0 +1,263 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+    <script>
+        function createComponentRows() {
+            const numOfComponents = document.getElementById("number_of_components").value;
+            const componentTable = document.getElementById("component_table");
+            componentTable.innerHTML = "";
+
+            for (let i = 0; i < numOfComponents; i++) {
+                const row = document.createElement("tr");
+
+                const nameCell = document.createElement("td");
+                const nameInput = document.createElement("input");
+                nameInput.type = "text";
+                nameInput.name = `component_${i}_name`;
+                nameCell.appendChild(nameInput);
+
+                const numQuestionsCell = document.createElement("td");
+                const numQuestionsInput = document.createElement("input");
+                numQuestionsInput.type = "number";
+                numQuestionsInput.name = `component_${i}_num_questions`;
+                numQuestionsCell.appendChild(numQuestionsInput);
+
+                row.appendChild(nameCell);
+                row.appendChild(numQuestionsCell);
+
+                componentTable.appendChild(row);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Input Form</h1>
+    <form action="/" method="POST">
+        <label for="bundle_number">Bundle Number:</label>
+        <input type="text" id="bundle_number" name="bundle_number" required><br>
+
+        <label for="teacher">Teacher:</label>
+        <input type="text" id="teacher" name="teacher" required><br>
+
+        <label for="academic_year">Academic Year:</label>
+        <input type="text" id="academic_year" name="academic_year" required><br>
+
+        <label for="semester">Semester:</label>
+        <input type="number" id="semester" name="semester" required><br>
+
+        <label for="branch">Branch:</label>
+        <input type="text" id="branch" name="branch" required><br>
+
+        <label for="batch">Batch:</label>
+        <input type="number" id="batch" name="batch" required><br>
+
+        <label for="section">Section:</label>
+        <input type="text" id="section" name="section" required><br>
+
+        <label for="subject_code">Subject Code:</label>
+        <input type="text" id="subject_code" name="subject_code" required><br>
+
+        <label for="subject_name">Subject Name:</label>
+        <input type="text" id="subject_name" name="subject_name" required><br>
+
+        <label for="number_of_students">Number of Students:</label>
+        <input type="number" id="number_of_students" name="number_of_students" required><br>
+
+        <label for="number_of_cos">Number of COs:</label>
+        <input type="number" id="number_of_cos" name="number_of_cos" required><br>
+
+        <label for="internal">Internal:</label>
+        <input type="number" id="internal" name="internal" required><br>
+
+        <label for="external">External:</label>
+        <input type="number" id="external" name="external" required><br>
+
+        <label for="direct">Direct:</label>
+        <input type="number" id="direct" name="direct" required><br>
+
+        <label for="indirect">Indirect:</label>
+        <!-- <label for="number_of_components">Number of Components:</label> -->
+        <!-- <input type="number" id="indirect" name="indirect" required><br>
+
+        <label for="number_of_components">Number of Components:</label>
+        <input type="number" id="number_of_components" name="number_of_components" onchange="createComponentRows()" required><br>
+
+<table id="component_table"></table>
+
+<input type="submit" value="Submit">
+</form>
+</body>
+</html> -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+     <title>Course Plan Generator</title>
+     <style>
+         body {
+             background-color: #f5f5f5;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             height: 100vh;
+         }
+ 
+         .container {
+             background-color: white;
+             padding: 30px;
+             border-radius: 10px;
+             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+         }
+ 
+         h1 {
+             color: #4a536e;
+             margin-bottom: 30px;
+         }
+ 
+         label {
+             font-weight: bold;
+             margin-top: 10px;
+         }
+ 
+         input[type="submit"] {
+             background-color: #4a536e;
+             color: white;
+             font-weight: bold;
+             width: 100%;
+         }
+     </style>
+     <script>
+        window.onload = createComponentRows;
+
+        function isNumber(event) {
+            let keyCode = event.which ? event.which : event.keyCode;
+            if (keyCode > 31 && (keyCode < 48 || keyCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+         function createComponentRows() {
+             const numOfComponents = document.getElementById("number_of_components").value;
+             const componentTable = document.getElementById("component_table");
+             componentTable.innerHTML = "";
+ 
+             for (let i = 0; i < numOfComponents; i++) {
+                 const row = document.createElement("tr");
+ 
+                 const nameCell = document.createElement("td");
+                 const nameInput = document.createElement("input");
+                 nameInput.type = "text";
+                 nameInput.name = `component_${i}_name`;
+                 nameInput.className = "form-control";
+                 nameCell.appendChild(nameInput);
+ 
+                 const numQuestionsCell = document.createElement("td");
+                 const numQuestionsInput = document.createElement("input");
+                 numQuestionsInput.type = "number";
+                 numQuestionsInput.name = `component_${i}_num_questions`;
+                 numQuestionsInput.className = "form-control";
+                 numQuestionsCell.appendChild(numQuestionsInput);
+ 
+                 row.appendChild(nameCell);
+                 row.appendChild(numQuestionsCell);
+ 
+                 componentTable.appendChild(row);
+             }
+         }
+     </script>
+ </head>
+ <body>
+    <div class="container">
+        <h1>Course Plan Generator</h1>
+        <form action="/" method="POST">
+            <div class="mb-3">
+                <label for="bundle_number" class="form-label">Bundle Number:</label>
+                <input type="text" class="form-control" id="bundle_number" name="bundle_number" required>
+            </div>
+            <div class="mb-3">
+                <label for="teacher" class="form-label">Teacher:</label>
+                <input type="text" class="form-control" id="teacher" name="teacher" required>
+            </div>
+            <!-- <div class="mb-3">
+                <label for="academic_year" class="form-label">Academic Year:</label>
+                <input type="text" class="form-control" id="academic_year" name="academic_year" required>
+            </div> -->
+            <div class="mb-3">
+                <label for="academic_year_start" class="form-label">Academic Year:</label>
+                <input type="text" class="form-control d-inline" id="academic_year_start" name="academic_year_start" style="width: 90px;" onkeypress="return isNumber(event)" required>
+                <span class="d-inline" style="margin: 0 5px;">-</span>
+                <input type="text" class="form-control d-inline" id="academic_year_end" name="academic_year_end" style="width: 90px;" onkeypress="return isNumber(event)" required>
+            </div>
+            <div class="mb-3">
+                <label for="semester" class="form-label">Semester:</label>
+                <input type="number" class="form-control" id="semester" name="semester" required>
+            </div>
+            <div class="mb-3">
+                <label for="branch" class="form-label">Branch:</label>
+                <input type="text" class="form-control" id="branch" name="branch" required>
+            </div>
+            <div class="mb-3">
+                <label for="batch" class="form-label">Batch:</label>
+                <input type="number" class="form-control" id="batch" name="batch" required>
+            </div>
+            <div class="mb-3">
+                <label for="section" class="form-label">Section:</label>
+                <input type="text" class="form-control" id="section" name="section" required>
+            </div>
+            <div class="mb-3">
+                <label for="subject_code" class="form-label">Subject Code:</label>
+                <input type="text" class="form-control" id="subject_code" name="subject_code" required>
+            </div>
+            <div class="mb-3">
+                <label for="subject_name" class="form-label">Subject Name:</label>
+                <input type="text" class="form-control" id="subject_name" name="subject_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="number_of_students" class="form-label">Number of Students:</label>
+                <input type="number" class="form-control" id="number_of_students" name="number_of_students" required>
+            </div>
+            <div class="mb-3">
+                <label for="number_of_cos" class="form-label">Number of COs:</label>
+                <input type="number" class="form-control" id="number_of_cos" name="number_of_cos" required>
+            </div>
+            <div class="mb-3">
+                <label for="internal" class="form-label">Internal:</label>
+                <input type="number" class="form-control" id="internal" name="internal" required>
+            </div>
+            <div class="mb-3">
+                <label for="external" class="form-label">External:</label>
+                <input type="number" class="form-control" id="external" name="external" required>
+            </div>
+            <div class="mb-3">
+                <label for="direct" class="form-label">Direct:</label>
+                <input type="number" class="form-control" id="direct" name="direct" required>
+            </div>
+            <div class="mb-3">
+                <label for="indirect" class="form-label">Indirect:</label>
+                <input type="number" class="form-control" id="indirect" name="indirect" required>
+            </div>
+            <div class="mb-3">
+                <label for="number_of_components" class="form-label">Number of Components:</label>
+                <input type="number" class="form-control" id="number_of_components" name="number_of_components" onchange="createComponentRows()" required>
+            </div>
+
+            <table id="component_table" class="table"></table>
+
+            <input type="submit" value="Submit" class="btn btn-primary mt-3">
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+ 
+ 

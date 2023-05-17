@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <title>Amrita Course Accreditation System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #eee;
+        }
+        .form-container {
+            width: 70%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #aaa;
+            margin-top: 30px;
+        }
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #09f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .component-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .component-container table {
+            width: 100%;
+            text-align: left;
+        }
+        .component-container th, .component-container td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Amrita Course Accreditation System</h1>
+        <form name="courseForm" method="POST">
+            <input type="number" name="batch" placeholder="Batch" required>
+            <select name="section" required>
+                <option value="">Select the section</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select>
+            <input type="text" name="subjectCode" placeholder="Subject Code" required>
+            <input type="text" name="subjectName" placeholder="Subject Name" required>
+            <input type="number" name="numberOfStudents" placeholder="Number of Students" required>
+            <input type="number" name="numberOfCOs" placeholder="Number of CO's" required>
+            <input type="number" name="internal" placeholder="Internal" required>
+            <input type="number" name="external" placeholder="External" required>
+            <input type="number" name="direct" placeholder="Direct" required>
+            <input type="number" name="indirect" placeholder="Indirect" required>
+            <input type="number" id="numberOfComponents" name="numberOfComponents" placeholder="Number of Components" required>
+            <div class="component-container" id="componentContainer"></div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#numberOfComponents").change(function(){
+                var numComponents = $(this).val();
+                $("#componentContainer").empty().show();
+                var table = $('<table></table>');
+                var thead = $('<thead></thead>').append('<tr><th>Component Name</th><th>Component Value</th></tr>');
+                <tr><th>Component Name</th><th>Component Value</th></tr>
+                table.append(thead);
+                for(var i=0; i<numComponents; i++){
+                    var row = $('<tr></tr>');
+                    row.append('<td><input type="text" name="componentName'+(i+1)+'" placeholder="Component Name '+(i+1)+'" required></td>');
+                    row.append('<td><input type="text" name="componentValue'+(i+1)+'" placeholder="Component Value '+(i+1)+'" required></td>');
+                    table.append(row);
+                }
+                $("#componentContainer").append(table);
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+                    

@@ -1,0 +1,18 @@
+Component_Details={"P1_I":{"Number_of_questions":3,},
+                        "P2_I":{"Number_of_questions":6},
+                        "CA_I":{"Number_of_questions":6},
+                        "EndSem_E":{"Number_of_questions":9}}
+Name of the component, number of questions in the component
+BN-String
+Teacher Name-String
+AY:2020 - 2024(two blanks)
+Semester:Integer
+Branch:String
+Batch:Integer
+Section:String
+SubjectCode:String
+SN:Str
+NOCOs:Int
+Inter/Exter/direct/indirect:float
+No of comp:Int
+--component name:string, the other box should be int
